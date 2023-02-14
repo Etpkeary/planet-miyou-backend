@@ -57,6 +57,9 @@ public class UserController {
         if (StringUtils.isAnyBlank(userAccount, userPassword, checkPassword)) {
             return null;
         }
+        if (!userPassword.equals(checkPassword)) {
+            return ResultUtils.error(ErrorCode.ACCOUNT_OR_PASSWORD_ERROR);
+        }
         long result = userService.userRegister(userAccount, userPassword, checkPassword);
         return ResultUtils.success(result);
     }
@@ -215,7 +218,7 @@ public class UserController {
     /**
      * @param request 请求体
      * @description: 是否为管理员
-     * @return 用户等于空并且用户权限不等于 权限1
+     * @return 用户等于空并且用户权限不等于 权限 1
      */
     private boolean isAdmin(HttpServletRequest request) {
         // 仅管理员可查询

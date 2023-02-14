@@ -4,7 +4,9 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.linglan.miyou.common.BaseResponse;
 import com.linglan.miyou.common.ErrorCode;
+import com.linglan.miyou.common.ResultUtils;
 import com.linglan.miyou.contant.UserConstant;
 import com.linglan.miyou.exception.BusinessException;
 import com.linglan.miyou.mapper.UserMapper;
@@ -55,7 +57,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     @Override
     public long userRegister(String userAccount, String userPassword, String checkPassword) {
         // 1. 校验
-        log.info(userAccount,userPassword,checkPassword);
         if (StringUtils.isAnyBlank(userAccount, userPassword, checkPassword)) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR, "参数为空");
         }
@@ -96,7 +97,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     }
 
     /**
-     *
      * @param userAccount  用户账户
      * @param userPassword 用户密码
      * @param request 请求体
