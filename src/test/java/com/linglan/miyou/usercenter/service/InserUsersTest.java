@@ -31,7 +31,7 @@ public class InserUsersTest {
     public void doInsertUsers() {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
-        final int INSERT_NUM = 100000;
+        final int INSERT_NUM = 10;
         List<User> userList = new ArrayList<>();
         for (int i = 0; i < INSERT_NUM; i++) {
             User user = new User();
@@ -45,7 +45,6 @@ public class InserUsersTest {
             user.setTags("[]");
             user.setUserStatus(0);
             user.setUserRole(0);
-            user.setPlanetCode("11111");
             userList.add(user);
         }
         userService.saveBatch(userList, 1000);
@@ -79,9 +78,8 @@ public class InserUsersTest {
                 user.setTags("[]");
                 user.setUserStatus(0);
                 user.setUserRole(0);
-                user.setPlanetCode("11111");
                 userList.add(user);
-                if (j % 10000 == 0) {
+                if (j % 100 == 0) {
                     break;
                 }
             }
@@ -95,4 +93,5 @@ public class InserUsersTest {
         stopWatch.stop();
         System.out.println(stopWatch.getTotalTimeMillis());
     }
+
 }

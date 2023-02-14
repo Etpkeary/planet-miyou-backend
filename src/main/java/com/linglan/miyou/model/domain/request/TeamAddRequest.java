@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 用户登录请求体
+ * 队伍添加请求体
  *
  * @author Linglan
  */

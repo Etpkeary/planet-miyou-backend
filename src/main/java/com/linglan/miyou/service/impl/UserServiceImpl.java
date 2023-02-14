@@ -334,7 +334,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         // 1 => User1, 2 => User2, 3 => User3
         Map<Long, List<User>> userIdUserListMap = this.list(userQueryWrapper)
                 .stream()
-                .map(user -> getSafetyUser(user))
+                .map(this::getSafetyUser)
                 .collect(Collectors.groupingBy(User::getId));
         List<User> finalUserList = new ArrayList<>();
         for (Long userId : userIdList) {

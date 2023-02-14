@@ -74,3 +74,5 @@ create table if not exists user_team
     isDelete   tinyint  default 0                 not null comment '是否删除'
 )
     comment '用户队伍关系表' charset = utf8;
+
+truncate table user;

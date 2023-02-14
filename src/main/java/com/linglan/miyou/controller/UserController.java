@@ -43,7 +43,7 @@ public class UserController {
 
     /**
      * @param userRegisterRequest 用户注册请求体
-     * @description: 用户请求
+     * @description: 用户注册
      * @return result
      */
     @PostMapping("/register")
@@ -81,6 +81,10 @@ public class UserController {
             return ResultUtils.error(ErrorCode.PARAMS_ERROR);
         }
         User user = userService.userLogin(userAccount, userPassword, request);
+        if (user == null) {
+            log.info("user login failed, userAccount cannot match userPassword");
+            return ResultUtils.error(ErrorCode.PARAMS_ERROR);
+        }
         return ResultUtils.success(user);
     }
 
@@ -228,17 +232,17 @@ public class UserController {
     }
 
     /**
-     * @param num 匹配用户限制的大小
+     * @param num 排序
      * @param request 请求体
      * @description: 获取最匹配的用户
      * @return userService.matchUsers(num, user)
      */
     @GetMapping("/match")
-    public BaseResponse<List<User>> matchUsers(long num, HttpServletRequest request) {
+    public BaseResponse<List<User>> matchUsers(long num,HttpServletRequest request) {
         if (num <= 0 || num > 20) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
         User user = userService.getLoginUser(request);
-        return ResultUtils.success(userService.matchUsers(num, user));
+        return ResultUtils.success(userService.matchUsers(num,user));
     }
 }

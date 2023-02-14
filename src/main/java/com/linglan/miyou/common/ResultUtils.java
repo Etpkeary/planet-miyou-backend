@@ -13,19 +13,7 @@ public class ResultUtils {
      * @return code,data,message
      */
     public static <T> BaseResponse<T> success(T data) {
-        return new BaseResponse<>(0, data, "ok");
-    }
-
-    /**
-     * @param code
-     * @param message
-     * @param description
-     * @param <T>
-     * @description: 成功
-     * @return
-     */
-    public static <T> BaseResponse<T> success(int code,String message,String description ) {
-        return new BaseResponse<>(code, null, message, description);
+        return new BaseResponse<>(0, data, "ok","");
     }
 
     /**

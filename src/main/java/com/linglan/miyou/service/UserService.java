@@ -98,5 +98,5 @@ public interface UserService extends IService<User> {
      * @param loginUser
      * @return
      */
-    List<User> matchUsers(long num, User loginUser);
+    List<User> matchUsers(long num,User loginUser);
 }

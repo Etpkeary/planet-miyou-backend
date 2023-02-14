@@ -70,34 +70,34 @@ public class UserServiceTest {
         String userPassword = "";
         String checkPassword = "123456";
         String planetCode = "1";
-        long result = userService.userRegister(userAccount, userPassword, checkPassword, planetCode);
+        long result = userService.userRegister(userAccount, userPassword, checkPassword);
         Assertions.assertEquals(-1, result);
         userAccount = "yu";
-        result = userService.userRegister(userAccount, userPassword, checkPassword, planetCode);
+        result = userService.userRegister(userAccount, userPassword, checkPassword);
         Assertions.assertEquals(-1, result);
         userAccount = "Linglan";
         userPassword = "123456";
-        result = userService.userRegister(userAccount, userPassword, checkPassword, planetCode);
+        result = userService.userRegister(userAccount, userPassword, checkPassword);
         Assertions.assertEquals(-1, result);
         userAccount = "Ling lan";
         userPassword = "12345678";
-        result = userService.userRegister(userAccount, userPassword, checkPassword, planetCode);
+        result = userService.userRegister(userAccount, userPassword, checkPassword);
         Assertions.assertEquals(-1, result);
         checkPassword = "123456789";
-        result = userService.userRegister(userAccount, userPassword, checkPassword, planetCode);
+        result = userService.userRegister(userAccount, userPassword, checkPassword);
         Assertions.assertEquals(-1, result);
         userAccount = "Linglan";
         checkPassword = "12345678";
-        result = userService.userRegister(userAccount, userPassword, checkPassword, planetCode);
+        result = userService.userRegister(userAccount, userPassword, checkPassword);
         Assertions.assertEquals(-1, result);
         userAccount = "Linglan";
-        result = userService.userRegister(userAccount, userPassword, checkPassword, planetCode);
+        result = userService.userRegister(userAccount, userPassword, checkPassword);
         Assertions.assertEquals(-1, result);
     }
 
     @Test
     public void testsearchUserByTags(){
-        List<String> tagName = Arrays.asList("java", "c++");
+        List<String> tagName = Arrays.asList("Java");
         List<User> userList = userService.searchUsersByTags(tagName);
         Assert.assertNotNull(userList);
     }
