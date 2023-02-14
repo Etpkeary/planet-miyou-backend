@@ -1,5 +1,6 @@
 package com.linglan.miyou.common;
 
+import com.linglan.miyou.model.domain.User;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
